@@ -18,7 +18,7 @@ def parse_schemadoc_template(schema_name):
         text = talk_page.text()
         parsed_text = mwparserfromhell.parse(text)
         templates = parsed_text.filter_templates()
-        if len(templates) > 0 and templates[0].name == 'SchemaDoc':
+        if len(templates) > 0: #and templates[0].name == 'SchemaDoc':
             return templates[0]
         else:
             return None
@@ -46,7 +46,6 @@ def write_csv(templates_data):
         writer = csv.writer(f)
         for row in templates_data:
             writer.writerow(row)
-
 
 schemas_list = read_schemas_list('schemas.txt')
 templates_data = get_templates_data(schemas_list)
